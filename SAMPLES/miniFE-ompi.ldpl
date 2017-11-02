@@ -1,0 +1,260 @@
+{"profile" : {
+   "MPI_Allreduce" :
+	{
+	"call" : 1640 ,
+ 	"first_call" : 0.000122418 ,
+ 	"last_call" : 6.24958 ,
+ 	"total_time" : 0.430748,
+ 	"min_time" : 0.000503499 ,
+ 	"max_time" : 0.0150327 ,
+ 	"total_size" : 0,
+ 	"min_size" : 0,
+ 	"max_size" : 0
+	},
+   "MPI_Irecv" :
+	{
+	"call" : 2448 ,
+ 	"first_call" : 0.824633 ,
+ 	"last_call" : 6.22589 ,
+ 	"total_time" : 0.00285286,
+ 	"min_time" : 5.28146e-06 ,
+ 	"max_time" : 1.69403e-05 ,
+ 	"total_size" : 0,
+ 	"min_size" : 0,
+ 	"max_size" : 0
+	},
+   "MPI_Allgather" :
+	{
+	"call" : 12 ,
+ 	"first_call" : 0.000239416 ,
+ 	"last_call" : 0.00236934 ,
+ 	"total_time" : 0.0014522,
+ 	"min_time" : 8.19463e-06 ,
+ 	"max_time" : 0.00047134 ,
+ 	"total_size" : 0,
+ 	"min_size" : 0,
+ 	"max_size" : 0
+	},
+   "MPI_Comm_size" :
+	{
+	"call" : 840 ,
+ 	"first_call" : 5.80384e-05 ,
+ 	"last_call" : 6.22588 ,
+ 	"total_time" : 0.00076014,
+ 	"min_time" : 3.39707e-06 ,
+ 	"max_time" : 1.00523e-05 ,
+ 	"total_size" : 0,
+ 	"min_size" : 0,
+ 	"max_size" : 0
+	},
+   "MPI_Init" :
+	{
+	"call" : 4 ,
+ 	"first_call" : 5.38531e-05 ,
+ 	"last_call" : 5.77355e-05 ,
+ 	"total_time" : 1.22396e-06,
+ 	"min_time" : 2.85108e-07 ,
+ 	"max_time" : 3.31884e-07 ,
+ 	"total_size" : 0,
+ 	"min_size" : 0,
+ 	"max_size" : 0
+	},
+   "MPI_Wait" :
+	{
+	"call" : 2448 ,
+ 	"first_call" : 0.824642 ,
+ 	"last_call" : 6.22596 ,
+ 	"total_time" : 0.00507886,
+ 	"min_time" : 7.5175e-06 ,
+ 	"max_time" : 0.000299316 ,
+ 	"total_size" : 0,
+ 	"min_size" : 0,
+ 	"max_size" : 0
+	},
+   "MPI_Bcast" :
+	{
+	"call" : 8 ,
+ 	"first_call" : 7.59234e-05 ,
+ 	"last_call" : 0.000114278 ,
+ 	"total_time" : 8.34553e-05,
+ 	"min_time" : 1.23209e-05 ,
+ 	"max_time" : 3.33543e-05 ,
+ 	"total_size" : 0,
+ 	"min_size" : 0,
+ 	"max_size" : 0
+	},
+   "MPI_Finalize" :
+	{
+	"call" : 4 ,
+ 	"first_call" : 6.25302 ,
+ 	"last_call" : 6.25322 ,
+ 	"total_time" : 1.04326e-06,
+ 	"min_time" : 1.36985e-07 ,
+ 	"max_time" : 4.25991e-07 ,
+ 	"total_size" : 0,
+ 	"min_size" : 0,
+ 	"max_size" : 0
+	},
+   "MPI_Comm_rank" :
+	{
+	"call" : 44 ,
+ 	"first_call" : 5.86866e-05 ,
+ 	"last_call" : 0.825245 ,
+ 	"total_time" : 3.92246e-06,
+ 	"min_time" : 5.1286e-07 ,
+ 	"max_time" : 7.2335e-07 ,
+ 	"total_size" : 0,
+ 	"min_size" : 0,
+ 	"max_size" : 0
+	},
+   "MPI_Send" :
+	{
+	"call" : 2448 ,
+ 	"first_call" : 0.824637 ,
+ 	"last_call" : 6.22596 ,
+ 	"total_time" : 0.0524765,
+ 	"min_time" : 9.59141e-05 ,
+ 	"max_time" : 0.000336948 ,
+ 	"total_size" : 0,
+ 	"min_size" : 0,
+ 	"max_size" : 0
+	},
+   "NULL" : {}
+}
+ ,
+ "stdout" : [
+{
+"time" : 6.25165,
+"rank" : 0,
+"line" : "Final Resid Norm: 7.21345e-08"
+
+}
+,
+{
+"time" : 6.22584,
+"rank" : 0,
+"line" : "Iteration = 200   Residual = 7.21345e-08"
+
+}
+,
+{
+"time" : 5.68571,
+"rank" : 0,
+"line" : "Iteration = 180   Residual = 7.33292e-07"
+
+}
+,
+{
+"time" : 5.14579,
+"rank" : 0,
+"line" : "Iteration = 160   Residual = 5.70131e-06"
+
+}
+,
+{
+"time" : 4.60632,
+"rank" : 0,
+"line" : "Iteration = 140   Residual = 4.67401e-05"
+
+}
+,
+{
+"time" : 4.06629,
+"rank" : 0,
+"line" : "Iteration = 120   Residual = 0.000281876"
+
+}
+,
+{
+"time" : 3.5258,
+"rank" : 0,
+"line" : "Iteration = 100   Residual = 0.00178093"
+
+}
+,
+{
+"time" : 2.98593,
+"rank" : 0,
+"line" : "Iteration = 80   Residual = 0.00402329"
+
+}
+,
+{
+"time" : 2.44668,
+"rank" : 0,
+"line" : "Iteration = 60   Residual = 0.00898414"
+
+}
+,
+{
+"time" : 1.90741,
+"rank" : 0,
+"line" : "Iteration = 40   Residual = 0.019698"
+
+}
+,
+{
+"time" : 1.36786,
+"rank" : 0,
+"line" : "Iteration = 20   Residual = 0.0573991"
+
+}
+,
+{
+"time" : 0.854235,
+"rank" : 0,
+"line" : "Initial Residual = 101.005"
+
+}
+,
+{
+"time" : 0.825248,
+"rank" : 0,
+"line" : "Starting CG solver ... "
+
+}
+,
+{
+"time" : 0.825116,
+"rank" : 0,
+"line" : "making matrix indices local...0.042541s, total time: 0.822239"
+
+}
+,
+{
+"time" : 0.782557,
+"rank" : 0,
+"line" : "      imposing Dirichlet BC...0.062135s, total time: 0.779698"
+
+}
+,
+{
+"time" : 0.720399,
+"rank" : 0,
+"line" : "      imposing Dirichlet BC...0.0720432s, total time: 0.717563"
+
+}
+,
+{
+"time" : 0.648321,
+"rank" : 0,
+"line" : "         assembling FE data...0.478858s, total time: 0.64552"
+
+}
+,
+{
+"time" : 0.16705,
+"rank" : 0,
+"line" : "generating matrix structure...0.159172s, total time: 0.166662"
+
+}
+,
+{
+"time" : 0.00777977,
+"rank" : 0,
+"line" : "      creating/filling mesh...0.00748992s, total time: 0.00748992"
+
+}
+
+]
+ }
