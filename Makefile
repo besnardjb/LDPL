@@ -1,7 +1,7 @@
 #MPC
-CC= MPC_UNPRIVATIZED_VARS="__compensation_ticks:stdout_stream" mpc_cc -g
+#CC= MPC_UNPRIVATIZED_VARS="__compensation_ticks:stdout_stream" mpc_cc -g
 #OTHER MPIS
-#CC= mpicc -g -ldl
+CC= mpicc -g -ldl
 
 TARGETS=libldpl.so
 
