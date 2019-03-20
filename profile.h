@@ -29,6 +29,12 @@ struct profile_entry
 	double total_size;
 	double max_size;
 	double min_size;
+
+	double max_burst;
+	double min_burst;
+
+	double last_hit;
+	size_t hits_count;
 };
 
 

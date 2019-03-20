@@ -21,10 +21,13 @@ int profile_entry_reduce( struct profile_entry * pe, struct profile_entry * out 
 	PMPI_Reduce( &pe->total_size, &out->total_size , 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD );	
 	PMPI_Reduce( &pe->min_size, &out->min_size , 1, MPI_DOUBLE, MPI_MIN,  0, MPI_COMM_WORLD );	
 	PMPI_Reduce( &pe->max_size, &out->max_size , 1, MPI_DOUBLE, MPI_MAX, 0, MPI_COMM_WORLD );	
+	PMPI_Reduce( &pe->max_burst, &out->max_burst , 1, MPI_DOUBLE, MPI_MAX,  0, MPI_COMM_WORLD );	
+	PMPI_Reduce( &pe->min_burst, &out->min_burst , 1, MPI_DOUBLE, MPI_MIN, 0, MPI_COMM_WORLD );	
 
 	return 0;
 }
 
+#define BURST_WINDOW 3e9
 
 char *profile_entry_render( struct profile_entry * pe )
 {
@@ -38,7 +41,7 @@ char *profile_entry_render( struct profile_entry * pe )
 
 	ret[0] = '\0';
 
-	snprintf( ret, 1024, "\t{\n\t\"call\" : %lld ,\n \t\"first_call\" : %g ,\n \t\"last_call\" : %g ,\n \t\"total_time\" : %g,\n \t\"min_time\" : %g ,\n \t\"max_time\" : %g ,\n \t\"total_size\" : %g,\n \t\"min_size\" : %g,\n \t\"max_size\" : %g\n\t}", pe->call_count, pe->first_call_ts / ticks_per_sec(), pe->last_call_ts / ticks_per_sec(), pe->total_time / ticks_per_sec(), pe->min_time / ticks_per_sec(), pe->max_time / ticks_per_sec() , pe->total_size, pe->min_size, pe->max_size );
+	snprintf( ret, 1024, "\t{\n\t\"call\" : %lld ,\n \t\"first_call\" : %g ,\n \t\"last_call\" : %g ,\n \t\"total_time\" : %g,\n \t\"min_time\" : %g ,\n \t\"max_time\" : %g ,\n \t\"total_size\" : %g,\n \t\"min_size\" : %g,\n \t\"max_size\" : %g,\n\t\"avg_call_per_sec\" : %g,\n\t\"min_burst\" : %g,\n\t\"max_burst\" : %g\n \t}", pe->call_count, pe->first_call_ts / ticks_per_sec(), pe->last_call_ts / ticks_per_sec(), pe->total_time / ticks_per_sec(), pe->min_time / ticks_per_sec(), pe->max_time / ticks_per_sec() , pe->total_size, pe->min_size, pe->max_size, pe->call_count / pe->total_time , pe->min_burst * ticks_per_sec() / BURST_WINDOW, pe->max_burst* ticks_per_sec() / BURST_WINDOW);
 
 	return ret;
 }
@@ -55,6 +58,11 @@ struct profile_array * profile_array_init()
 
 	memset(ret, 0, sizeof(struct profile_array));
 
+	int i;
+	for( i = 0 ; i < LDPL_FUNC_COUNT ; i++ )
+	{
+		ret->funcs[i].last_hit = -1;
+	}
 
 	pthread_spin_init(&ret->lock, 0);
 
@@ -175,6 +183,36 @@ int profile_array_hit_time( struct profile_array * pa ,
 	pe->call_count++;
 
 	ticks now = ldpl_getticks();
+
+	if(pe->last_hit < 0 )
+	{
+		pe->last_hit = now;
+	}
+	else
+	{
+		if( BURST_WINDOW < (now - pe->last_hit))
+		{
+			/* Over one second report burst */
+			if( (pe->min_burst == 0) || (pe->hits_count < pe->min_burst) )
+			{
+				pe->min_burst = pe->hits_count;
+			}
+
+			if( (pe->max_burst == 0) || ( pe->max_burst < pe->hits_count ) )
+			{
+				pe->max_burst = pe->hits_count;
+			}
+
+
+			pe->last_hit = now;
+			pe->hits_count = 0;
+		}
+		else
+		{
+			/* Less than 1 second accumulate burst */
+			pe->hits_count++;
+		}
+	}
 
 	if( pe->first_call_ts == 0 )
 	{
