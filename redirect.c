@@ -293,7 +293,7 @@ void stdout_handler(char * line, void * phctx )
 
 int stdout_intercept()
 {
-	if( getenv("LDPL_NOREDIRECT") )
+	if( !getenv("LDPL_REDIRECT") )
 		return 0;
 
 	if( intercept_stdout_done == -1 )
