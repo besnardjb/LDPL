@@ -104,7 +104,6 @@ char * profile_array_render_json( struct profile_array * pa )
 	int i;
 	for (i = 0; i < LDPL_FUNC_COUNT ; ++i)
 	{
-		if( pa->funcs[i].call_count )
 		{
 			char * ent = profile_entry_render( &pa->funcs[i] );
 			strcat( ret , "   \"" );	
