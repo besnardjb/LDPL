@@ -41,7 +41,7 @@ char *profile_entry_render( struct profile_entry * pe )
 
 	ret[0] = '\0';
 
-	snprintf( ret, 1024, "\t{\n\t\"call\" : %lld ,\n \t\"first_call\" : %g ,\n \t\"last_call\" : %g ,\n \t\"total_time\" : %g,\n \t\"min_time\" : %g ,\n \t\"max_time\" : %g ,\n \t\"total_size\" : %g,\n \t\"min_size\" : %g,\n \t\"max_size\" : %g,\n\t\"avg_call_per_sec\" : %g,\n\t\"min_burst\" : %g,\n\t\"max_burst\" : %g\n \t}", pe->call_count, pe->first_call_ts / ticks_per_sec(), pe->last_call_ts / ticks_per_sec(), pe->total_time / ticks_per_sec(), pe->min_time / ticks_per_sec(), pe->max_time / ticks_per_sec() , pe->total_size, pe->min_size, pe->max_size, pe->call_count / pe->total_time , pe->min_burst * ticks_per_sec() / BURST_WINDOW, pe->max_burst* ticks_per_sec() / BURST_WINDOW);
+	snprintf( ret, 1024, "\t{\n\t\"call\" : %lld ,\n \t\"first_call\" : %g ,\n \t\"last_call\" : %g ,\n \t\"total_time\" : %g,\n \t\"min_time\" : %g ,\n \t\"max_time\" : %g ,\n \t\"total_size\" : %g,\n \t\"min_size\" : %g,\n \t\"max_size\" : %g,\n\t\"min_burst\" : %g,\n\t\"max_burst\" : %g\n \t}", pe->call_count, pe->first_call_ts / ticks_per_sec(), pe->last_call_ts / ticks_per_sec(), pe->total_time / ticks_per_sec(), pe->min_time / ticks_per_sec(), pe->max_time / ticks_per_sec() , pe->total_size, pe->min_size, pe->max_size, pe->min_burst * ticks_per_sec() / BURST_WINDOW, pe->max_burst* ticks_per_sec() / BURST_WINDOW);
 
 	return ret;
 }
